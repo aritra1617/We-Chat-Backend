@@ -8,10 +8,10 @@ const path = require('path');
 const multer = require('multer');
 const cors=require("cors");
 const {userJoin,getCurrentUser,userLeave,getRoomusers}=require("./users.js");
-app.use(express.static(path.join(__dirname, "/../Frontend/public")));
+app.use(express.static(path.join(__dirname, "/Frontend/public")));
 app.use(express.static(path.join(__dirname, "/uploads")));
 app.get('/', function(req,res){
-    res.sendFile(path.resolve(__dirname + '/../Frontend/public/start.html'));
+    res.sendFile(path.resolve(__dirname + '/Frontend/public/start.html'));
 });
 app.get("/hi",(req,res)=>{
   res.send("dsfsdf");
