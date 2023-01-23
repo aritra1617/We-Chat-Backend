@@ -132,7 +132,7 @@ input.addEventListener('change', function() {
   var formData = new FormData();
   formData.append('image', file);
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://localhost:3000/upload', true);
+  xhr.open('POST', '/upload', true);
   xhr.onload = function() {
     if (xhr.status === 200) {
       var response = JSON.parse(xhr.responseText);
