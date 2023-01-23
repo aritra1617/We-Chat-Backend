@@ -13,7 +13,9 @@ app.use(express.static(path.join(__dirname, "/uploads")));
 app.get('/', function(req,res){
     res.sendFile(path.resolve(__dirname + '/../Frontend/public/start.html'));
 });
-
+app.get("/hi",(req,res)=>{
+  res.send("dsfsdf");
+})
 //const users = {}
 io.on('connection', async (socket) => {
 
