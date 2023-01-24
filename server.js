@@ -32,12 +32,9 @@ io.on('connection', async (socket) => {
 
   // socket.broadcast.emit('room-users', {room: room_, all_users: all_users});
 
-  socket.on('new-chat-message', (message) => {
-
-      let currentDate = new Date();
-      let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+  socket.on('new-chat-message', (data) => {
       const user=getCurrentUser(socket.id);
-      socket.broadcast.to(user.room).emit('receive', {message: message, name:user.username, time: time});
+      socket.broadcast.to(user.room).emit('receive', {message: data.message, name:user.username, time: data.time});
   });
 
   socket.on('is-typing', username =>{

@@ -120,8 +120,8 @@ $(".chat-form-container form").on('submit', function(e) {
     let currentDate = new Date();
     let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
     console.log(username);
-    append(username, input.val(), time, 'right-align');
-    socket.emit('new-chat-message', input.val());
+    append(username, message, time, 'right-align');
+    socket.emit('new-chat-message', {message,time});
     input.val("");
   }
 });
