@@ -51,9 +51,10 @@ io.on('connection', async (socket) => {
   socket.on('disconnect', () => {
     const user=userLeave(socket.id);
     console.log(user);
-    const roomusers=getRoomusers(user.room);
+    if(user){
     socket.broadcast.to(user.room).emit("update-users",roomusers);
     socket.broadcast.to(user.room).emit('user-left',user.username);
+    }
   });
   socket.on("image upload",(file)=>{
       const user=getCurrentUser(socket.id);
