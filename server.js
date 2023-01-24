@@ -13,9 +13,6 @@ app.use(express.static(path.join(__dirname, "/uploads")));
 app.get('/', function(req,res){
     res.sendFile(path.resolve(__dirname + '/Frontend/public/start.html'));
 });
-app.get("/hi",(req,res)=>{
-  res.send("dsfsdf");
-})
 //const users = {}
 io.on('connection', async (socket) => {
 
@@ -52,7 +49,7 @@ io.on('connection', async (socket) => {
     const user=userLeave(socket.id);
     console.log(user);
     if(user){
-    socket.broadcast.to(user.room).emit("update-users",roomusers);
+    socket.broadcast.to(user.room).emit("update-users",getRoomusers(user.room));
     socket.broadcast.to(user.room).emit('user-left',user.username);
     }
   });
